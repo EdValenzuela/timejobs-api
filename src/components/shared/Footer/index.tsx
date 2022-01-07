@@ -1,4 +1,4 @@
-import React from "react";
+
 import CardCateg from "./CardCateg";
 import Credits from "./Credits";
 import TitleCateg from "./TitleCateg";
@@ -24,30 +24,30 @@ const Footer = () => {
             <div className="lg:w-1/5 md:w-1/2 w-full px-4">
               <TitleCateg title={'Lorem'} />
                 <nav className="list-none mb-8">
-                    {dataCategoria1.map((item) => (<CardCateg key={Date.now()} item={item} />))}
+                    {dataCategoria1.map((item, i) => (<CardCateg key={Date.now()+ i} item={item} />))}
                 </nav>
             </div>
             <div className="lg:w-1/5 md:w-1/2 w-full px-4">
                 <nav className="list-none xl:mt-10 lg:mt-10 mb-3">
-                    {dataCategoria1.map((item) => (<CardCateg key={Date.now()} item={item} />))}
+                    {dataCategoria1.map((item, i) => (<CardCateg key={Date.now()+ i} item={item} />))}
                 </nav>
             </div>
             <div className="lg:w-1/5 md:w-1/2 w-full px-4">
                 <TitleCateg title={'Venta distribution'} />
                 <nav className="list-none mb-10">
-                    {dataCategoria1.map((item) => (<CardCateg key={Date.now()} item={item} />))}
+                    {dataCategoria1.map((item, i) => (<CardCateg key={Date.now()+ i} item={item} />))}
                 </nav>
             </div>
             <div className="lg:w-1/5 md:w-1/2 w-full px-4">
                 <TitleCateg title={'Lorem Ipsum'} />
                 <nav className="list-none mb-10">
-                    {dataCategoria2.map((item) => (<CardCateg key={Date.now()} item={item} />))}
+                    {dataCategoria2.map((item, i) => (<CardCateg key={Date.now()+ i} item={item} />))}
                 </nav>
             </div>
             <div className="lg:w-1/5 md:w-1/2 w-full px-4">
                 <TitleCateg title={'Lorem Ipsum'} />
                 <nav className="list-none mb-10">
-                    {dataCategoria2.map((item) => (<CardCateg key={Date.now()} item={item} />))}
+                    {dataCategoria2.map((item, i) => (<CardCateg key={Date.now()+ i} item={item} />))}
                 </nav>
             </div>
           </div>

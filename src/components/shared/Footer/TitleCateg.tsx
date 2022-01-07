@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { PropsTitle } from '../../../redux/interfaces'
 
 const TitleCateg = ({title}: PropsTitle) => {

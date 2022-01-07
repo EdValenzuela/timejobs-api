@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getFetchData } from '../../redux/actions/beerAction';
 
@@ -21,7 +21,7 @@ const Beer = ({beer, getFetch}) => {
                 beer.isFetching 
                 ? (<LoadingData/>)
                 : (
-                    <ul className="flex flex-wrap flex-row justify-start mt-5">
+                    <ul className="flex flex-wrap flex-row justify-center md:justify-start mt-5">
                         {
                             beer.data.map( item => ( 
                                 <CardBeer key={item.id} item={item} />

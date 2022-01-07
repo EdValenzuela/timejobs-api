@@ -1,0 +1,21 @@
+header div nav a::after{
+    content: ".";
+    display: block;
+    font-size: 4em;
+    position: relative;
+    top: -45px;
+    left: -100px;
+    color: red;
+}
+
+header div nav a:nth-child(1)::after{
+    visibility: hidden;
+}
+
+@media only screen and (max-width: 1000px){
+    header div nav a::after,
+    header div nav a:nth-child(1)::after
+    {
+        visibility: hidden;
+    }
+}
