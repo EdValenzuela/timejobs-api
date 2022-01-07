@@ -1,12 +1,13 @@
-import { FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_ERROR } from "../actions/beerAction";
+import { FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_ERROR, BeerAction } from "../actions/beerAction";
+import { DataState } from "../interfaces";
 
-const initialState = {
+const initialState: DataState = {
     data : [],
     isFetching: false,
     error: null
 }
 
-export default (state = initialState, action) =>{
+export default (state = initialState, action: BeerAction) =>{
     switch (action.type){
         case FETCH_DATA_REQUEST:
             return {

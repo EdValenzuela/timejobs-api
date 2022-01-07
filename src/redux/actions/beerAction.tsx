@@ -2,7 +2,12 @@ export const FETCH_DATA_REQUEST = 'FETCH_DATA_REQUEST';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 export const FETCH_DATA_ERROR = 'FETCH_DATA_ERROR';
 
-export const getFetchData = () => async(dispatch) => {
+export type BeerAction = 
+    | { type: 'FETCH_DATA_REQUEST' }
+    | { type: 'FETCH_DATA_SUCCESS', payload : { data : any } }
+    | { type: 'FETCH_DATA_ERROR', payload : { error : string } }
+
+export const getFetchData = () => async(dispatch:(any)) => {
 
     dispatch({type: FETCH_DATA_REQUEST});
 
@@ -15,7 +20,7 @@ export const getFetchData = () => async(dispatch) => {
                 data
             }
         })
-    } catch (error) {
+    } catch (error:any) {
         dispatch({
             type: FETCH_DATA_ERROR,
             error: error.toString()
