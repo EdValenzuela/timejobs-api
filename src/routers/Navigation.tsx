@@ -10,7 +10,7 @@ import Header from "../components/shared/Header";
 import Beer from "../components/Main";
 import DetailBeer from "../components/Main/DetailBeer";
 import UbicationBeer from "../components/Main/UbicationBeer";
-import ShopBeer from "../components/Main/ShopBeer";
+import CartBeer from "../components/Main/CartBeer";
 
 const Navigation = () => {
   return (
@@ -21,7 +21,7 @@ const Navigation = () => {
             <Route exact path="/" component={ Beer } />
             <Route exact path="/detail/:id" component={ DetailBeer } />
             <Route exact path="/maps" component={ UbicationBeer } />
-            <Route exact path="/shop" component={ ShopBeer } />
+            <Route exact path="/shop" component={ CartBeer } />
             <Redirect to="/" />
           </Switch>
         <Footer />

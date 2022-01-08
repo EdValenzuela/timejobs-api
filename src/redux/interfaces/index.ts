@@ -25,3 +25,7 @@ export interface DataState {
     isFetching: false,
     error: null
 }
+
+export interface DataCart {
+    dataCart : []
+}

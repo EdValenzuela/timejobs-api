@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const CardBeer = ({item}) => {
+const CardBeer = ({item, addCart}) => {
     const { id, name, tagline, image_url, target_fg } = item;
     return (
         <>
@@ -13,8 +13,14 @@ const CardBeer = ({item}) => {
                 <div className='my-5'>
                     <p className='text-3xl font-bold text-red-500'>${target_fg}</p>
                 </div>
+                <button onClick={ () => addCart(item) }
+                    className="bg-green-900 hover:bg-green-500 text-white w-9/12 mb-2 flex items-center justify-center font-bold py-2 px-4 rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                </button>
                 <Link to={`/detail/${id}`} title={`/detail/${id}`}
-                    className="bg-purple-900 hover:bg-purple-500 text-white w-9/12 text-center font-bold py-2 px-4 rounded uppercase text-base">
+                    className="bg-pink-900 hover:bg-pink-500 text-white w-9/12 text-center font-bold py-2 px-4 rounded uppercase text-base">
                         More
                 </Link>
             </li>

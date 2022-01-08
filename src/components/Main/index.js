@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { addCart } from '../../redux/actions/beerCartAction';
 import { getFetchData } from '../../redux/actions/beerAction';
 
 import CardBeer from './CardBeer';
 import LoadingData from './LoadingData';
 
-const Beer = ({beer, getFetch}) => {
+const Beer = ({beer, getFetch, addCart}) => {
 
     useEffect(() => {
         const getData = async() => {
@@ -24,7 +25,7 @@ const Beer = ({beer, getFetch}) => {
                     <ul className="flex flex-wrap flex-row justify-center md:justify-start mt-5">
                         {
                             beer.data.map( item => ( 
-                                <CardBeer key={item.id} item={item} />
+                                <CardBeer key={item.id} item={item} addCart={addCart} />
                             ))
                         }
                     </ul>)
@@ -40,7 +41,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    getFetch : () => dispatch(getFetchData())
+    getFetch : () => dispatch(getFetchData()),
+    addCart: (value) => dispatch(addCart(value))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Beer)
