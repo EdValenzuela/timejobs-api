@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import LoadingData from "./LoadingData";
 import { addCart } from '../../redux/actions/beerCartAction'
+import { useCounter } from '../../hooks/useCounter';
 
 const DetailBeer = ({addCart}) => {
   const { id } = useParams();
@@ -10,6 +11,32 @@ const DetailBeer = ({addCart}) => {
   const { data, fetching } = useFetch(baseURL);
   
   const { name, tagline, target_fg, description, image_url, brewers_tips } = data;
+
+  const { count, handleIncrement, handleDecrement } = useCounter(1);
+
+  const btnCounter = () => (
+    <div className='w-full xl:w-auto flex items-center justify-between border-2 border-gray-200 rounded-full p-2'>
+      <button onClick={() => handleDecrement()} className="w-full xl:w-auto flex justify-center items-center border-0 p-5 focus:outline-none cursor-pointer rounded">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+        </svg>
+      </button>
+      <p className='text-2xl font-bold my-2'>{count}</p>
+      <button onClick={() => handleIncrement()} className="w-full xl:w-auto flex justify-center items-center border-0 p-5 focus:outline-none cursor-pointer rounded">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
+        </svg>
+      </button>
+    </div>
+  )
+
+  const btnAdd = () => (
+    <button onClick={() => addCart(data)} className="w-full xl:w-auto flex justify-center items-center my-5  text-white bg-pink-900 hover:bg-pink-700 border-0 p-5 focus:outline-none hover:bg-pink-00 rounded font-bold text-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+      </svg>
+    </button>
+  )
 
   return (
     <>
@@ -24,16 +51,10 @@ const DetailBeer = ({addCart}) => {
                     <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{tagline}</h1>
                     <p className="mb-8 leading-relaxed">{description}</p>
                     <p className="mb-8 leading-relaxed">{brewers_tips}</p>
-                    <div className="flex justify-evenly bg-white p-5 w-full items-center">
-                        <div>
-                            <p className='text-3xl font-bold text-red-500'>$ {target_fg}</p>
-                        </div>
-                        <button onClick={() => addCart(data)} className="flex items-center text-white bg-red-500 border-0 py-4 px-6 focus:outline-none hover:bg-red-600 rounded font-bold text-lg">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                          </svg>
-                        </button>
-                        <Link to="/" className="flex items-center text-white bg-amber-500 border-0 py-4 px-6 focus:outline-none hover:bg-amber-600 font-bold rounded text-lg">Back</Link>
+                    <div className="flex flex-col xl:flex-row justify-evenly bg-white p-5 w-full items-center">
+                        <p className='text-3xl font-bold text-black mb-3'>$ {target_fg}</p>
+                        {btnCounter()}
+                        {btnAdd()}
                     </div>
                 </div>
                 <div className="lg:w-full md:w-1/2 w-1/4 h-2/4">

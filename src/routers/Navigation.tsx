@@ -9,7 +9,7 @@ import Header from "../components/shared/Header";
 
 import Beer from "../components/Main";
 import DetailBeer from "../components/Main/DetailBeer";
-import UbicationBeer from "../components/Main/UbicationBeer";
+import LocationBeer from "../components/Main/LocationBeer";
 import CartBeer from "../components/Main/CartBeer";
 
 const Navigation = () => {
@@ -20,7 +20,7 @@ const Navigation = () => {
           <Switch>
             <Route exact path="/" component={ Beer } />
             <Route exact path="/detail/:id" component={ DetailBeer } />
-            <Route exact path="/maps" component={ UbicationBeer } />
+            <Route exact path="/maps" component={ LocationBeer } />
             <Route exact path="/shop" component={ CartBeer } />
             <Redirect to="/" />
           </Switch>
